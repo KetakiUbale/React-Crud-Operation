@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.notfound{
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color:salmon;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.label{
+  background-color:rgb(218, 198, 219);
+  margin-top: 0%;
+  margin-bottom: 0%;
+  margin-left: 0%;
+  color: crimson;
+}
+.input-box{
+  background-color: skyblue;
+  margin-left: 100%;
+  margin-top: 0%;
+  padding-bottom: 0%;
+}
