@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import {useHistory} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import {useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const AddUser = () => {
+const EditUser = () => {
     let history= useHistory();
-const [user, setUser] = useState({
+    const {id} = useParams();
+     const [user, setUser] = useState({
     name: "",
     discription: ""
 
@@ -15,18 +16,27 @@ const onInputChange = e => {
     setUser({...user, [e.target.name]: e.target.value})
 };
 
+useEffect(()=>{
+    loadUser();
+
+},[]);
+
 const onSubmit = async e => {
     e.preventDefault();
     await axios.post("https://localhost:44377/api/book/addbook",user)
     history.push("/");
     
 };
+const loadUser = async () => {
+    const result = await axios.get(`https://localhost:44377/api/book/getallbooks/${id}`);
+    console.log(result);
+}
 
     return(
 
     <form onSubmit={e => onSubmit(e)}>
   <div className="form-group form">
-  <h1>Add Users</h1>
+  <h1>Edit Users</h1>
     <label 
     className="label">Book Name :
     <input className="input-box" 
@@ -53,10 +63,10 @@ const onSubmit = async e => {
     </div>
 
 
-  <button type="submit" className="btn btn-primary">Add User</button>
+  <button type="submit" className="btn btn-primary">Edit User</button>
 </form>
 
     );
 
 };
-export default AddUser;
+export default EditUser;

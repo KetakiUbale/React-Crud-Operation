@@ -12,6 +12,7 @@ const Home=()=>{
         const result = await axios.get("https://localhost:44377/api/book/getallbooks");
         setUser(result.data);
     }
+    
 
 
     return (
@@ -39,7 +40,8 @@ const Home=()=>{
           <td>
               <Link className="btn btn-primary mr-2">View</Link>
               
-              <Link className="btn btn-outline-primary mr-2">Edit</Link>
+              <Link className="btn btn-outline-primary mr-2" to={`/users/edit/${user.id}`}>
+              Edit</Link>
               <Link className="btn btn-danger">Delete</Link>
     
           </td>
